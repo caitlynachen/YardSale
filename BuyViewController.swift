@@ -21,7 +21,9 @@ class BuyViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func unwindToManage(segue: UIStoryboardSegue){
+        
+    }
     /*
     // MARK: - Navigation
 

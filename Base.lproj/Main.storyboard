@@ -10,6 +10,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Buy-->
+        <scene sceneID="1eX-7r-GCT">
+            <objects>
+                <viewController id="6i7-Qs-acN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9vw-le-ORd"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q78-qv-FFY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7kh-v9-S2i">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Buy" id="yv4-xo-MCu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8og-K5-BF9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="68" y="817"/>
+        </scene>
         <!--Sell-->
         <scene sceneID="N7q-nw-bgO">
             <objects>
@@ -26,7 +45,11 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Sell an Item" id="DkS-ns-Q2X">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="I4d-v5-w45"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="I4d-v5-w45">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="mXy-27-YPK" id="oPr-P1-477"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -77,6 +100,7 @@
                                 </state>
                                 <connections>
                                     <action selector="sellButtonTapped:" destination="mXy-27-YPK" eventType="touchUpInside" id="rbw-HL-SFg"/>
+                                    <segue destination="7OD-5G-bau" kind="unwind" identifier="unwindToManage" unwindAction="unwindToManageWithSegue:" id="0R3-mu-8Xc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HF8-et-0nX">
@@ -126,10 +150,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4G-ai-lWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="7OD-5G-bau" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="684" y="828.93553223388312"/>
+            <point key="canvasLocation" x="1247" y="59"/>
         </scene>
-        <!--Buy-->
+        <!--Manage Sales-->
         <scene sceneID="3j2-qO-WC3">
             <objects>
                 <viewController id="qdX-l6-Eqv" customClass="BuyViewController" customModule="YardSale" customModuleProvider="target" sceneMemberID="viewController">
@@ -140,9 +165,28 @@
                     <view key="view" contentMode="scaleToFill" id="vDf-ah-NIm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZII-F2-CKf">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="s4H-fb-69J">
+                                        <barButtonItem key="rightBarButtonItem" title="New Item" id="UAG-dm-8dc">
+                                            <connections>
+                                                <segue destination="mXy-27-YPK" kind="presentation" id="4T3-6i-oIJ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZII-F2-CKf" firstAttribute="top" secondItem="xVA-Yk-woE" secondAttribute="bottom" id="69B-bo-Diw"/>
+                            <constraint firstItem="ZII-F2-CKf" firstAttribute="leading" secondItem="vDf-ah-NIm" secondAttribute="leading" id="dcN-PL-vYN"/>
+                            <constraint firstAttribute="trailing" secondItem="ZII-F2-CKf" secondAttribute="trailing" id="qhJ-XN-J3n"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Buy" id="rD2-Uu-GyB"/>
+                    <tabBarItem key="tabBarItem" title="Manage Sales" id="rD2-Uu-GyB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BTD-lQ-Tu2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -159,7 +203,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="qdX-l6-Eqv" kind="relationship" relationship="viewControllers" id="Pim-7x-TR4"/>
-                        <segue destination="mXy-27-YPK" kind="relationship" relationship="viewControllers" id="SWD-pR-yYp"/>
+                        <segue destination="6i7-Qs-acN" kind="relationship" relationship="viewControllers" id="vIH-mS-Dej"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fu2-VS-NQq" userLabel="First Responder" sceneMemberID="firstResponder"/>

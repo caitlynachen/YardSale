@@ -19,12 +19,12 @@ struct ItemObject {
     let caption: String
     let price: Double
     let condition: String
-    let createdAt: NSDate
+    let createdAt: String
     
     let ref: FIRDatabaseReference?
 
 
-    init (title: String, price: Double, condition: String, caption: String, key: String = "", imageUrl: String, createdAt: NSDate){
+    init (title: String, price: Double, condition: String, caption: String, key: String = "", imageUrl: String, createdAt: String){
         
         self.key = key
         self.title = title
@@ -47,7 +47,7 @@ struct ItemObject {
         price = snapshotValue["price"] as! Double
         condition = snapshotValue["condition"] as! String
         imageUrl = snapshotValue["imageUrl"] as! String
-        createdAt = snapshotValue["createdAt"] as! NSDate
+        createdAt = snapshotValue["createdAt"] as! String
 
         ref = snapshot.ref
     }

@@ -32,7 +32,10 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
 
+        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
 
@@ -87,37 +90,61 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         dismiss(animated:true, completion: nil) //5
     }
 
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "unwindToManage", sender: self)
+    }
     @IBAction func sellButtonTapped(_ sender: Any) {
-        let storage = FIRStorage.storage()
-        
-        let storageRef = storage.reference(forURL: "gs://yardsale-cd99c.appspot.com")
-
-
-        let ref = FIRDatabase.database().reference(withPath: "item-name")
-        let itemRef = ref.child((titleTextField.text?.lowercased())!)
-        
-        let imageData: NSData = UIImagePNGRepresentation((imageView?.image)!)! as NSData
-        
-        let imageRef = storageRef.child(titleTextField.text!)
-        
-        let uploadTask = imageRef.put(imageData as Data, metadata: nil) { metadata, error in
-            if error != nil {
-            } else {
-                // Metadata contains file metadata such as size, content-type, and download URL.
-                let downloadURL = metadata!.downloadURL()
-                let price = round(Double(self.priceTextField.text!)!*100)/100
-                let items = ItemObject(title: self.titleTextField.text!, price: Double(price), condition: self.conditionTextField.text!, caption: self.captionTextView.text, imageUrl: String(describing: downloadURL!), createdAt: Ns)
-                
-                itemRef.setValue(items.toAnyObject())
+//        if(titleTextField.text == ""){
+//            let alertUpdate = UIAlertController(title: "Please enter a title!", message: "A title is required to post an item!", preferredStyle: .alert)
+//            let alert = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
+//            alertUpdate.addAction(alert)
+//            self.present(alertUpdate, animated: true, completion: nil)
+//            
+//        }else if(priceTextField.text == nil){
+//            
+//        }else if(conditionTextField.text == nil){
+//            
+//        }else if(captionTextView.text == nil){
+//            
+//        }else{
+            let storage = FIRStorage.storage()
+            
+            let storageRef = storage.reference(forURL: "gs://yardsale-cd99c.appspot.com")
+            
+            
+            let ref = FIRDatabase.database().reference(withPath: "item-name")
+            let itemRef = ref.child((titleTextField.text?.lowercased())!)
+            
+            let imageData: NSData = UIImagePNGRepresentation((imageView?.image)!)! as NSData
+            
+            let imageRef = storageRef.child(titleTextField.text!)
+            
+            let uploadTask = imageRef.put(imageData as Data, metadata: nil) { metadata, error in
+                if error != nil {
+                } else {
+                    // Metadata contains file metadata such as size, content-type, and download URL.
+                    let downloadURL = metadata!.downloadURL()
+                    let price = round(Double(self.priceTextField.text!)!*100)/100
+                    let items = ItemObject(title: self.titleTextField.text!, price: Double(price), condition: self.conditionTextField.text!, caption: self.captionTextView.text, imageUrl: String(describing: downloadURL!), createdAt: String(describing: NSDate()))
+                    
+                    itemRef.setValue(items.toAnyObject())
+                    
+                }
+                self.performSegue(withIdentifier: "unwindToManage", sender: self)
 
             }
-        }
+            
+            
+            
+//        }
         
-       
-       
-        
+
         
         // 4
+    }
+    
+    func dismissKeyboard(){
+        view.endEditing(true)
     }
     /*
     // MARK: - Navigation
