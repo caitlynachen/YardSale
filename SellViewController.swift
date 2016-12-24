@@ -113,10 +113,10 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             
             let ref = FIRDatabase.database().reference(withPath: "item-name")
-            let itemRef = ref.child((titleTextField.text?.lowercased())!)
+            let itemRef = ref.child(titleTextField.text!)
             
             let imageData: NSData = UIImagePNGRepresentation((imageView?.image)!)! as NSData
-            
+        
             let imageRef = storageRef.child(titleTextField.text!)
             
             let uploadTask = imageRef.put(imageData as Data, metadata: nil) { metadata, error in
@@ -124,10 +124,11 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 } else {
                     // Metadata contains file metadata such as size, content-type, and download URL.
                     let downloadURL = metadata!.downloadURL()
+                   
                     let price = round(Double(self.priceTextField.text!)!*100)/100
                     let items = ItemObject(title: self.titleTextField.text!, price: Double(price), condition: self.conditionTextField.text!, caption: self.captionTextView.text, imageUrl: String(describing: downloadURL!), createdAt: String(describing: NSDate()))
-                    
                     itemRef.setValue(items.toAnyObject())
+                        
                     
                 }
                 self.performSegue(withIdentifier: "unwindToManage", sender: self)

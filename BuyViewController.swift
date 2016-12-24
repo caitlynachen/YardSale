@@ -1,29 +1,83 @@
 //
 //  BuyViewController.swift
-//  
+//  YardSale
 //
-//  Created by Caitlyn Chen on 12/21/16.
-//
+//  Created by Caitlyn Chen on 12/23/16.
+//  Copyright © 2016 Caitlyn Chen. All rights reserved.
 //
 
 import UIKit
+import Firebase
+import FirebaseStorage
 
-class BuyViewController: UIViewController {
+class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var storageRef: FIRStorageReference?
+    
+    var items: [ItemObject] = []
+
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        storageRef = FIRStorage.storage().reference(forURL: "gs://yardsale-cd99c.appspot.com")
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        let ref = FIRDatabase.database().reference(withPath: "item-name")
+
+        ref.observe(.value, with: { snapshot in
+            var newItems: [ItemObject] = []
+            
+            for item in snapshot.children {
+                let itemOb = ItemObject(snapshot: item as! FIRDataSnapshot)
+                newItems.append(itemOb)
+            }
+            
+            self.items = newItems
+            self.tableView.reloadData()
+        })
 
         // Do any additional setup after loading the view.
     }
 
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:CustomTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! CustomTableViewCell
+        let itemOb = items[indexPath.row]
+        
+        let url = URL(string: itemOb.imageUrl)
+        
+        let data = NSData(contentsOf: url!)
+        if data != nil{
+            cell.imgView.image = UIImage(data: data as! Data)
+        }
+
+        
+        
+        cell.titleLabel.text = itemOb.title
+        cell.priceLabel.text = String(itemOb.price)
+        cell.conditionLabel.text = itemOb.condition
+        cell.captionLabel.text = itemOb.caption
+//        cell.textLabel?.text = groceryItem.name
+//        cell.detailTextLabel?.text = groceryItem.addedByUser
+//        
+//        toggleCellCheckbox(cell, isCompleted: groceryItem.completed)
+        
+        return cell
+    }
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func unwindToManage(segue: UIStoryboardSegue){
-        
-    }
+
     /*
     // MARK: - Navigation
 
