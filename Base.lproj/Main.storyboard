@@ -180,7 +180,6 @@
                                     <color key="titleShadowColor" red="0.1450980392" green="0.64313725489999995" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="sellButtonTapped:" destination="mXy-27-YPK" eventType="touchUpInside" id="rbw-HL-SFg"/>
                                     <segue destination="7OD-5G-bau" kind="unwind" identifier="unwindToManage" unwindAction="unwindToManageWithSegue:" id="0R3-mu-8Xc"/>
                                 </connections>
                             </button>

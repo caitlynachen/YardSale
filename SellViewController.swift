@@ -11,15 +11,15 @@ import Firebase
 import FirebaseStorage
 
 class SellViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var imageView: UIImageView?
     var imagePicker = UIImagePickerController()
     
     
-
+    
     
     @IBOutlet weak var cameraButton: UIButton!
-
+    
     @IBOutlet weak var titleTextField: UITextField!
     
     @IBOutlet weak var captionTextView: UITextView!
@@ -28,17 +28,17 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var conditionTextField: UITextField!
     var items: [ItemObject] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
         
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-
+        
         view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,7 +46,7 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func cameraButtonTapped(sender: AnyObject) {
         //println("hi")
- 
+        
         let alertController = UIAlertController(title: nil, message: "Where do you want to get your picture from?", preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -55,7 +55,7 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Only show camera option if rear camera is available
         if (UIImagePickerController.isCameraDeviceAvailable(.rear)) {
             let cameraAction = UIAlertAction(title: "Photo from Camera", style: .default) { (action) in
-//                imagePicker.delegate = self
+                //                imagePicker.delegate = self
                 self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
                 self.imagePicker.allowsEditing = false
                 self.present(self.imagePicker, animated: true, completion: nil)
@@ -65,8 +65,8 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
         
         let photoLibraryAction = UIAlertAction(title: "Photo from Library", style: .default) { (action) in
-//            let imagePicker = UIImagePickerController()
-//            imagePicker.delegate = self
+            //            let imagePicker = UIImagePickerController()
+            //            imagePicker.delegate = self
             self.imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
             self.imagePicker.allowsEditing = true
             self.present(self.imagePicker, animated: true, completion: nil)
@@ -76,7 +76,7 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         alertController.addAction(photoLibraryAction)
         
         self.present(alertController, animated: true, completion: nil)
-
+        
         
     }
     
@@ -89,72 +89,104 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imageView?.image = chosenImage //4
         dismiss(animated:true, completion: nil) //5
     }
-
+    
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "unwindToManage", sender: self)
     }
-    @IBAction func sellButtonTapped(_ sender: Any) {
-//        if(titleTextField.text == ""){
-//            let alertUpdate = UIAlertController(title: "Please enter a title!", message: "A title is required to post an item!", preferredStyle: .alert)
-//            let alert = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
-//            alertUpdate.addAction(alert)
-//            self.present(alertUpdate, animated: true, completion: nil)
-//            
-//        }else if(priceTextField.text == nil){
-//            
-//        }else if(conditionTextField.text == nil){
-//            
-//        }else if(captionTextView.text == nil){
-//            
-//        }else{
-            let storage = FIRStorage.storage()
-            
-            let storageRef = storage.reference(forURL: "gs://yardsale-cd99c.appspot.com")
-            
-            
-            let ref = FIRDatabase.database().reference(withPath: "item-name")
-            let itemRef = ref.child(titleTextField.text!)
-            
-            let imageData: NSData = UIImagePNGRepresentation((imageView?.image)!)! as NSData
-        
-            let imageRef = storageRef.child(titleTextField.text!)
-            
-            let uploadTask = imageRef.put(imageData as Data, metadata: nil) { metadata, error in
-                if error != nil {
-                } else {
-                    // Metadata contains file metadata such as size, content-type, and download URL.
-                    let downloadURL = metadata!.downloadURL()
-                   
-                    let price = round(Double(self.priceTextField.text!)!*100)/100
-                    let items = ItemObject(title: self.titleTextField.text!, price: Double(price), condition: self.conditionTextField.text!, caption: self.captionTextView.text, imageUrl: String(describing: downloadURL!), createdAt: String(describing: NSDate()))
-                    itemRef.setValue(items.toAnyObject())
-                        
-                    
-                }
-                self.performSegue(withIdentifier: "unwindToManage", sender: self)
 
-            }
-            
-            
-            
-//        }
-        
-
-        
-        // 4
-    }
-    
     func dismissKeyboard(){
         view.endEditing(true)
     }
-    /*
-    // MARK: - Navigation
+    
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "unwindToManage"{
+            
+            if(titleTextField.text == ""){
+                
+                let alertUpdate = UIAlertController(title: "Please enter a title!", message: "A title is required to post an item.", preferredStyle: .alert)
+                let alert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+                alertUpdate.addAction(alert)
+                self.present(alertUpdate, animated: true, completion: nil)
+                
+                return false
+                
+            } else if(captionTextView.text == ""){
+                
+                let alertUpdate = UIAlertController(title: "Please enter a caption!", message: "A caption is required to post an item.", preferredStyle: .alert)
+                let alert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+                alertUpdate.addAction(alert)
+                self.present(alertUpdate, animated: true, completion: nil)
+                
+                return false
+                
+                
+            } else if(priceTextField.text == ""){
+                
+                let alertUpdate = UIAlertController(title: "Please enter a price!", message: "A price is required to post an item.", preferredStyle: .alert)
+                let alert = UIAlertAction(title: "OL", style: UIAlertActionStyle.default)
+                alertUpdate.addAction(alert)
+                self.present(alertUpdate, animated: true, completion: nil)
+                
+                return false
+
+                
+            }else if(conditionTextField.text == ""){
+                
+                let alertUpdate = UIAlertController(title: "Please enter the condition!", message: "The condition is required to post an item.", preferredStyle: .alert)
+                let alert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+                alertUpdate.addAction(alert)
+                self.present(alertUpdate, animated: true, completion: nil)
+                
+                return false
+
+                
+            }else if (imageView?.image == nil){
+                
+                let alertUpdate = UIAlertController(title: "Please choose an image!", message: "An image is required to post an item!", preferredStyle: .alert)
+                let alert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+                alertUpdate.addAction(alert)
+                self.present(alertUpdate, animated: true, completion: nil)
+                
+                return false
+                
+            }
+            else{
+                
+                let storage = FIRStorage.storage()
+                
+                let storageRef = storage.reference(forURL: "gs://yardsale-cd99c.appspot.com")
+                
+                
+                let ref = FIRDatabase.database().reference(withPath: "item-name")
+                let itemRef = ref.child(titleTextField.text!)
+                
+                let imageData: NSData = UIImagePNGRepresentation((imageView?.image)!)! as NSData
+                
+                let imageRef = storageRef.child(titleTextField.text!)
+                
+                let uploadTask = imageRef.put(imageData as Data, metadata: nil) { metadata, error in
+                    if error != nil {
+                    } else {
+                        // Metadata contains file metadata such as size, content-type, and download URL.
+                        let downloadURL = metadata!.downloadURL()
+                        
+                        let price = round(Double(self.priceTextField.text!)!*100)/100
+                        let items = ItemObject(title: self.titleTextField.text!, price: Double(price), condition: self.conditionTextField.text!, caption: self.captionTextView.text, imageUrl: String(describing: downloadURL!), createdAt: String(describing: NSDate()))
+                        itemRef.setValue(items.toAnyObject())
+                        
+                        
+                    }
+                    
+                }
+
+            }
+            
+
+        }
+        
+        return true
+        
     }
-    */
-
+    
 }
