@@ -63,11 +63,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         cell.priceLabel.text = String(itemOb.price)
         cell.conditionLabel.text = itemOb.condition
         cell.captionLabel.text = itemOb.caption
-//        cell.textLabel?.text = groceryItem.name
-//        cell.detailTextLabel?.text = groceryItem.addedByUser
-//        
-//        toggleCellCheckbox(cell, isCompleted: groceryItem.completed)
-        
+
         return cell
     }
 
