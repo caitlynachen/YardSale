@@ -12,8 +12,10 @@ import GooglePlaces
 
 class LocationViewController: UIViewController, CLLocationManagerDelegate , GMSMapViewDelegate, GMSAutocompleteViewControllerDelegate {
     
-    // OUTLETS
+    @IBOutlet weak var navBar: UINavigationBar!
 
+    // OUTLETS
+    var address: String = ""
     @IBOutlet weak var googleMapsView: GMSMapView!
 
     // VARIABLES
@@ -86,16 +88,26 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate , GMSM
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         
         let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 15.0)
+        
+        navBar.topItem?.title = place.formattedAddress
+        var marker = GMSMarker(position: CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
+        marker.map = googleMapsView
+        
         self.googleMapsView.camera = camera
         self.dismiss(animated: true, completion: nil) // dismiss after select place
         
     }
+  
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         
         print("ERROR AUTO COMPLETE \(error)")
         
     }
+    
+//    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+//        
+//    }
     
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         self.dismiss(animated: true, completion: nil) // when cancel search
@@ -109,6 +121,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate , GMSM
         
         self.locationManager.startUpdatingLocation()
         self.present(autoCompleteController, animated: true, completion: nil)
+        
     }
     
     

@@ -258,7 +258,8 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eus-Ez-xbn">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="hE0-DE-4Qa">
+                                    <navigationItem title="Location" id="hE0-DE-4Qa">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="IAh-eK-eQW"/>
                                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="s0O-zj-TRF">
                                             <connections>
                                                 <action selector="openSearchAddress:" destination="Suw-rn-9ds" id="8W1-7D-c2O"/>
@@ -284,7 +285,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="googleMapsView" destination="IA6-Hm-dta" id="NCd-mp-1gP"/>
+                        <outlet property="googleMapsView" destination="IA6-Hm-dta" id="hI2-n6-eYk"/>
+                        <outlet property="navBar" destination="Eus-Ez-xbn" id="0bZ-Fs-Tbb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7EO-oA-TFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
