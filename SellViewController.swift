@@ -9,13 +9,12 @@
 import UIKit
 import Firebase
 import FirebaseStorage
+import GooglePlaces
 
-class SellViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SellViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBOutlet weak var imageView: UIImageView?
     var imagePicker = UIImagePickerController()
-    
-    
     
     
     @IBOutlet weak var cameraButton: UIButton!
@@ -36,6 +35,7 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         
         view.addGestureRecognizer(tap)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -189,4 +189,7 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
     }
     
+    
+
 }
+

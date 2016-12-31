@@ -62,7 +62,7 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         cell.titleLabel.text = itemOb.title
         cell.priceLabel.text = String(itemOb.price)
         cell.conditionLabel.text = itemOb.condition
-        cell.captionLabel.text = itemOb.caption
+        cell.addressLabel.text = "hello"
 
         return cell
     }

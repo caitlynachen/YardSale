@@ -45,8 +45,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyB-hE-ziy">
-                                                    <rect key="frame" x="153" y="37" width="57" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyB-hE-ziy">
+                                                    <rect key="frame" x="153" y="37" width="62" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -79,7 +79,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="captionLabel" destination="IyB-hE-ziy" id="I1Z-yf-86C"/>
+                                            <outlet property="addressLabel" destination="IyB-hE-ziy" id="EKK-pB-OHs"/>
                                             <outlet property="conditionLabel" destination="2Ab-Tk-gIu" id="4V2-eY-CxM"/>
                                             <outlet property="imgView" destination="anp-7N-fle" id="PUd-oX-SER"/>
                                             <outlet property="priceLabel" destination="Yk0-dV-Ack" id="TxA-OH-TT9"/>
@@ -191,6 +191,13 @@
                                     <action selector="cameraButtonTappedWithSender:" destination="mXy-27-YPK" eventType="touchUpInside" id="ef0-2s-UEK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWc-to-A9G">
+                                <rect key="frame" x="16" y="297" width="55" height="30"/>
+                                <state key="normal" title="location"/>
+                                <connections>
+                                    <segue destination="Suw-rn-9ds" kind="show" id="IDV-DC-9WK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -205,6 +212,7 @@
                             <constraint firstItem="wzr-eQ-tdo" firstAttribute="leading" secondItem="6EZ-Th-hH1" secondAttribute="leading" id="Qcm-Om-lFg"/>
                             <constraint firstItem="lbO-vt-E6h" firstAttribute="leading" secondItem="873-UI-h71" secondAttribute="trailing" constant="10" id="SC8-7F-uLm"/>
                             <constraint firstItem="HF8-et-0nX" firstAttribute="bottom" secondItem="873-UI-h71" secondAttribute="bottom" id="Xa7-bk-xmx"/>
+                            <constraint firstItem="jWc-to-A9G" firstAttribute="top" secondItem="HF8-et-0nX" secondAttribute="bottom" constant="27" id="aeI-Ce-Gzo"/>
                             <constraint firstItem="lbO-vt-E6h" firstAttribute="top" secondItem="873-UI-h71" secondAttribute="top" id="bCq-Co-MyW"/>
                             <constraint firstItem="lVe-gf-MMe" firstAttribute="leading" secondItem="873-UI-h71" secondAttribute="trailing" constant="10" id="cyo-al-6To"/>
                             <constraint firstItem="WOi-ks-3So" firstAttribute="top" secondItem="lbO-vt-E6h" secondAttribute="bottom" constant="15" id="d8a-ij-X1n"/>
@@ -213,6 +221,7 @@
                             <constraint firstItem="873-UI-h71" firstAttribute="top" secondItem="Fma-4W-FbT" secondAttribute="bottom" constant="15" id="hRq-tp-wN9"/>
                             <constraint firstItem="873-UI-h71" firstAttribute="leading" secondItem="6EZ-Th-hH1" secondAttribute="leadingMargin" id="m2C-QV-PyK"/>
                             <constraint firstItem="HF8-et-0nX" firstAttribute="top" secondItem="873-UI-h71" secondAttribute="top" id="q5L-Fg-dya"/>
+                            <constraint firstItem="jWc-to-A9G" firstAttribute="leading" secondItem="6EZ-Th-hH1" secondAttribute="leadingMargin" id="qIv-gn-6Ur"/>
                             <constraint firstItem="0gb-25-nnL" firstAttribute="top" secondItem="wzr-eQ-tdo" secondAttribute="bottom" id="qJm-Tm-uuY"/>
                             <constraint firstItem="ntv-Eq-fbi" firstAttribute="top" secondItem="6EZ-Th-hH1" secondAttribute="top" constant="20" id="tyJ-VL-6cG"/>
                             <constraint firstItem="WOi-ks-3So" firstAttribute="trailing" secondItem="6EZ-Th-hH1" secondAttribute="trailingMargin" id="vqn-64-9X4"/>
@@ -232,7 +241,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a4G-ai-lWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7OD-5G-bau" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1247" y="59"/>
+            <point key="canvasLocation" x="1245.5999999999999" y="58.920539730134934"/>
+        </scene>
+        <!--Location View Controller-->
+        <scene sceneID="cYN-Wf-7wo">
+            <objects>
+                <viewController id="Suw-rn-9ds" customClass="LocationViewController" customModule="YardSale" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H32-Mi-PYz"/>
+                        <viewControllerLayoutGuide type="bottom" id="pjY-ei-bXw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lew-TE-3fc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eus-Ez-xbn">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="hE0-DE-4Qa">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="s0O-zj-TRF">
+                                            <connections>
+                                                <action selector="openSearchAddress:" destination="Suw-rn-9ds" id="8W1-7D-c2O"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IA6-Hm-dta" customClass="GMSMapView">
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Eus-Ez-xbn" firstAttribute="top" secondItem="H32-Mi-PYz" secondAttribute="bottom" id="3zl-Xb-m8I"/>
+                            <constraint firstItem="IA6-Hm-dta" firstAttribute="leading" secondItem="lew-TE-3fc" secondAttribute="leadingMargin" id="FMH-HV-nKx"/>
+                            <constraint firstItem="IA6-Hm-dta" firstAttribute="top" secondItem="Eus-Ez-xbn" secondAttribute="bottom" id="L7F-aS-n0k"/>
+                            <constraint firstItem="Eus-Ez-xbn" firstAttribute="leading" secondItem="lew-TE-3fc" secondAttribute="leading" id="R19-Im-fFF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IA6-Hm-dta" secondAttribute="trailing" id="Ze6-pi-uV5"/>
+                            <constraint firstAttribute="trailing" secondItem="Eus-Ez-xbn" secondAttribute="trailing" id="duF-Mn-p2M"/>
+                            <constraint firstItem="pjY-ei-bXw" firstAttribute="top" secondItem="IA6-Hm-dta" secondAttribute="bottom" id="ppp-ny-dtA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="googleMapsView" destination="IA6-Hm-dta" id="NCd-mp-1gP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7EO-oA-TFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2082" y="-7"/>
         </scene>
         <!--Manage Sales-->
         <scene sceneID="3j2-qO-WC3">
