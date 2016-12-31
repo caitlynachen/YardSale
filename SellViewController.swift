@@ -10,12 +10,16 @@ import UIKit
 import Firebase
 import FirebaseStorage
 import GooglePlaces
+import GoogleMaps
 
 class SellViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
+    @IBOutlet weak var search: UISearchBar!
+//    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView?
     var imagePicker = UIImagePickerController()
     
+    var place: GMSPlace?
     
     @IBOutlet weak var cameraButton: UIButton!
     
@@ -27,6 +31,13 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var conditionTextField: UITextField!
     var items: [ItemObject] = []
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if place != nil{
+//            locationLabel.text = place?.formattedAddress
+            search.text = place?.formattedAddress
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,6 +161,15 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 
                 return false
                 
+            } else if (place == nil){
+                
+                let alertUpdate = UIAlertController(title: "Please choose an location!", message: "An location is required to post an item!", preferredStyle: .alert)
+                let alert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+                alertUpdate.addAction(alert)
+                self.present(alertUpdate, animated: true, completion: nil)
+                
+                return false
+                
             }
             else{
                 
@@ -189,6 +209,9 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
     }
     
+    @IBAction func unwindToSell(segue: UIStoryboardSegue){
+        
+    }
     
 
 }

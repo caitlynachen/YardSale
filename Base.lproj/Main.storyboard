@@ -191,28 +191,35 @@
                                     <action selector="cameraButtonTappedWithSender:" destination="mXy-27-YPK" eventType="touchUpInside" id="ef0-2s-UEK"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="rzi-EA-g25">
+                                <rect key="frame" x="0.0" y="291" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWc-to-A9G">
-                                <rect key="frame" x="16" y="297" width="55" height="30"/>
-                                <state key="normal" title="location"/>
+                                <rect key="frame" x="0.0" y="290" width="375" height="41"/>
                                 <connections>
-                                    <segue destination="Suw-rn-9ds" kind="show" id="IDV-DC-9WK"/>
+                                    <segue destination="Suw-rn-9ds" kind="presentation" id="vyx-UN-4WF"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="rzi-EA-g25" firstAttribute="top" secondItem="jWc-to-A9G" secondAttribute="bottom" constant="-40" id="01y-Ea-N8P"/>
                             <constraint firstItem="lVe-gf-MMe" firstAttribute="top" secondItem="lbO-vt-E6h" secondAttribute="bottom" constant="15" id="075-y1-4Vk"/>
                             <constraint firstItem="ntv-Eq-fbi" firstAttribute="leading" secondItem="6EZ-Th-hH1" secondAttribute="leading" id="8la-4W-nFv"/>
+                            <constraint firstItem="rzi-EA-g25" firstAttribute="top" secondItem="HF8-et-0nX" secondAttribute="bottom" constant="21" id="8zt-9f-h8V"/>
+                            <constraint firstItem="rzi-EA-g25" firstAttribute="leading" secondItem="6EZ-Th-hH1" secondAttribute="leading" id="COf-ei-O77"/>
                             <constraint firstItem="HF8-et-0nX" firstAttribute="trailing" secondItem="873-UI-h71" secondAttribute="trailing" id="Cy9-zp-x00"/>
                             <constraint firstItem="WOi-ks-3So" firstAttribute="leading" secondItem="lVe-gf-MMe" secondAttribute="trailing" constant="8" id="ECv-ir-eQG"/>
                             <constraint firstItem="lbO-vt-E6h" firstAttribute="trailing" secondItem="Fma-4W-FbT" secondAttribute="trailing" id="Ghd-Vx-myg"/>
+                            <constraint firstItem="jWc-to-A9G" firstAttribute="trailing" secondItem="rzi-EA-g25" secondAttribute="trailing" id="HPE-Qu-bW1"/>
                             <constraint firstItem="Fma-4W-FbT" firstAttribute="leading" secondItem="6EZ-Th-hH1" secondAttribute="leadingMargin" id="IXh-2Q-bfE"/>
                             <constraint firstItem="Fma-4W-FbT" firstAttribute="top" secondItem="ntv-Eq-fbi" secondAttribute="bottom" constant="16" id="OJe-rf-kzQ"/>
                             <constraint firstAttribute="trailing" secondItem="ntv-Eq-fbi" secondAttribute="trailing" id="QNH-IT-XKm"/>
                             <constraint firstItem="wzr-eQ-tdo" firstAttribute="leading" secondItem="6EZ-Th-hH1" secondAttribute="leading" id="Qcm-Om-lFg"/>
                             <constraint firstItem="lbO-vt-E6h" firstAttribute="leading" secondItem="873-UI-h71" secondAttribute="trailing" constant="10" id="SC8-7F-uLm"/>
                             <constraint firstItem="HF8-et-0nX" firstAttribute="bottom" secondItem="873-UI-h71" secondAttribute="bottom" id="Xa7-bk-xmx"/>
-                            <constraint firstItem="jWc-to-A9G" firstAttribute="top" secondItem="HF8-et-0nX" secondAttribute="bottom" constant="27" id="aeI-Ce-Gzo"/>
+                            <constraint firstItem="jWc-to-A9G" firstAttribute="top" secondItem="HF8-et-0nX" secondAttribute="bottom" constant="20" id="aeI-Ce-Gzo"/>
                             <constraint firstItem="lbO-vt-E6h" firstAttribute="top" secondItem="873-UI-h71" secondAttribute="top" id="bCq-Co-MyW"/>
                             <constraint firstItem="lVe-gf-MMe" firstAttribute="leading" secondItem="873-UI-h71" secondAttribute="trailing" constant="10" id="cyo-al-6To"/>
                             <constraint firstItem="WOi-ks-3So" firstAttribute="top" secondItem="lbO-vt-E6h" secondAttribute="bottom" constant="15" id="d8a-ij-X1n"/>
@@ -221,9 +228,10 @@
                             <constraint firstItem="873-UI-h71" firstAttribute="top" secondItem="Fma-4W-FbT" secondAttribute="bottom" constant="15" id="hRq-tp-wN9"/>
                             <constraint firstItem="873-UI-h71" firstAttribute="leading" secondItem="6EZ-Th-hH1" secondAttribute="leadingMargin" id="m2C-QV-PyK"/>
                             <constraint firstItem="HF8-et-0nX" firstAttribute="top" secondItem="873-UI-h71" secondAttribute="top" id="q5L-Fg-dya"/>
-                            <constraint firstItem="jWc-to-A9G" firstAttribute="leading" secondItem="6EZ-Th-hH1" secondAttribute="leadingMargin" id="qIv-gn-6Ur"/>
                             <constraint firstItem="0gb-25-nnL" firstAttribute="top" secondItem="wzr-eQ-tdo" secondAttribute="bottom" id="qJm-Tm-uuY"/>
+                            <constraint firstAttribute="trailing" secondItem="rzi-EA-g25" secondAttribute="trailing" id="tSQ-fL-ecJ"/>
                             <constraint firstItem="ntv-Eq-fbi" firstAttribute="top" secondItem="6EZ-Th-hH1" secondAttribute="top" constant="20" id="tyJ-VL-6cG"/>
+                            <constraint firstItem="jWc-to-A9G" firstAttribute="leading" secondItem="rzi-EA-g25" secondAttribute="trailing" constant="-375" id="vin-g2-MQS"/>
                             <constraint firstItem="WOi-ks-3So" firstAttribute="trailing" secondItem="6EZ-Th-hH1" secondAttribute="trailingMargin" id="vqn-64-9X4"/>
                             <constraint firstAttribute="trailing" secondItem="wzr-eQ-tdo" secondAttribute="trailing" id="wCG-id-rSQ"/>
                         </constraints>
@@ -235,6 +243,7 @@
                         <outlet property="conditionTextField" destination="WOi-ks-3So" id="KRZ-eo-5Dt"/>
                         <outlet property="imageView" destination="873-UI-h71" id="Tw4-VF-CAg"/>
                         <outlet property="priceTextField" destination="lVe-gf-MMe" id="N9Z-OG-1Fc"/>
+                        <outlet property="search" destination="rzi-EA-g25" id="axG-WS-QpC"/>
                         <outlet property="titleTextField" destination="Fma-4W-FbT" id="aNj-bL-q2A"/>
                     </connections>
                 </viewController>
@@ -259,7 +268,12 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Location" id="hE0-DE-4Qa">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="IAh-eK-eQW"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="IAh-eK-eQW">
+                                            <connections>
+                                                <action selector="doneButtonTapped:" destination="Suw-rn-9ds" id="UAJ-aa-YPA"/>
+                                                <segue destination="eIw-Id-y2l" kind="unwind" identifier="unwindToSell" unwindAction="unwindToSellWithSegue:" id="4RW-rZ-P5x"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="s0O-zj-TRF">
                                             <connections>
                                                 <action selector="openSearchAddress:" destination="Suw-rn-9ds" id="8W1-7D-c2O"/>
@@ -290,8 +304,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7EO-oA-TFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eIw-Id-y2l" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2082" y="-7"/>
+            <point key="canvasLocation" x="2080.8000000000002" y="-7.6461769115442282"/>
         </scene>
         <!--Manage Sales-->
         <scene sceneID="3j2-qO-WC3">

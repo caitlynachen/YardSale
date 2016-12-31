@@ -14,8 +14,8 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate , GMSM
     
     @IBOutlet weak var navBar: UINavigationBar!
 
+    var placeGLobal: GMSPlace?
     // OUTLETS
-    var address: String = ""
     @IBOutlet weak var googleMapsView: GMSMapView!
 
     // VARIABLES
@@ -92,6 +92,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate , GMSM
         navBar.topItem?.title = place.formattedAddress
         var marker = GMSMarker(position: CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
         marker.map = googleMapsView
+        placeGLobal = place
         
         self.googleMapsView.camera = camera
         self.dismiss(animated: true, completion: nil) // dismiss after select place
@@ -123,7 +124,34 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate , GMSM
         self.present(autoCompleteController, animated: true, completion: nil)
         
     }
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "unwindToSell", sender: self)
+    }
     
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "unwindToSell"{
+            
+            if placeGLobal == nil{
+//                let alertUpdate = UIAlertController(title: "Please a location", message: "A location is required to post an item.", preferredStyle: .alert)
+//                let alert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+//                alertUpdate.addAction(alert)
+//                self.present(alertUpdate, animated: true, completion: nil)
+
+                
+            } else{
+                let dvc = segue.destination as! SellViewController
+                dvc.place = self.placeGLobal
+                
+            }
+            
+        }
+        
+    
+    }
+    
+
+
     
     
     
