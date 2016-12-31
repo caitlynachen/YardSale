@@ -22,6 +22,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
 
+        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        
+        view.addGestureRecognizer(tap)
+
         // Do any additional setup after loading the view.
     }
 
@@ -30,6 +34,9 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func dismissKeyboard(){
+        view.endEditing(true)
+    }
     
     
     @IBAction func createUserButtonTapped(_ sender: Any) {
