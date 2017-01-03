@@ -20,11 +20,15 @@ struct ItemObject {
     let price: Double
     let condition: String
     let createdAt: String
+    let addressStr: String
+    let latCoor: Double
+    let longCoor: Double
+    
     
     let ref: FIRDatabaseReference?
 
 
-    init (title: String, price: Double, condition: String, caption: String, key: String = "", imageUrl: String, createdAt: String){
+    init (title: String, price: Double, condition: String, caption: String, key: String = "", imageUrl: String, createdAt: String, addressStr: String, latCoor: Double, longCoor: Double){
         
         self.key = key
         self.title = title
@@ -34,6 +38,9 @@ struct ItemObject {
         self.createdAt = createdAt
         self.ref = nil
         self.imageUrl = imageUrl
+        self.addressStr = addressStr
+        self.latCoor = latCoor
+        self.longCoor = longCoor
         
         
     }
@@ -48,7 +55,11 @@ struct ItemObject {
         condition = snapshotValue["condition"] as! String
         imageUrl = snapshotValue["imageUrl"] as! String
         createdAt = snapshotValue["createdAt"] as! String
+        addressStr = snapshotValue["addressStr"] as! String
+        latCoor = snapshotValue["latCoor"] as! Double
+        longCoor = snapshotValue["longCoor"] as! Double
 
+        
         ref = snapshot.ref
     }
     
@@ -59,7 +70,10 @@ struct ItemObject {
             "price": price,
             "condition": condition,
             "imageUrl": imageUrl,
-            "createdAt": createdAt
+            "createdAt": createdAt,
+            "addressStr": addressStr,
+            "latCoor": latCoor,
+            "longCoor": longCoor
         ]
     }
 

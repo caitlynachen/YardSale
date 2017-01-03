@@ -62,9 +62,18 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         cell.titleLabel.text = itemOb.title
         cell.priceLabel.text = String(itemOb.price)
         cell.conditionLabel.text = itemOb.condition
-        cell.addressLabel.text = "hello"
+        cell.addressLabel.text = itemOb.addressStr
 
         return cell
+    }
+
+    var selectedItem : ItemObject?
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedItem = items[indexPath.row]
+
+        self.performSegue(withIdentifier: "toBuyItem", sender: nil)
+        
     }
 
     
@@ -73,15 +82,17 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toBuyItem"{
+            let dvc = segue.destination as! BuyItemViewController
+            dvc.item = self.selectedItem
+
+        }
     }
-    */
+ 
+    @IBAction func unwindToBuy(segue: UIStoryboardSegue){
+        
+    }
+    
 
 }

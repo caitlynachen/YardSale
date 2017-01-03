@@ -104,6 +104,7 @@
                     <tabBarItem key="tabBarItem" title="Buy" id="yv4-xo-MCu"/>
                     <connections>
                         <outlet property="tableView" destination="7qT-Bz-VXK" id="4bl-Wt-kja"/>
+                        <segue destination="75p-Cr-3L5" kind="presentation" identifier="toBuyItem" id="9zX-kL-n8y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8og-K5-BF9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -424,6 +425,101 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0t-C9-Zk7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2336.8000000000002" y="884.70764617691157"/>
+        </scene>
+        <!--Buy Item View Controller-->
+        <scene sceneID="F36-gv-vDh">
+            <objects>
+                <viewController id="75p-Cr-3L5" customClass="BuyItemViewController" customModule="YardSale" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DEZ-Bk-BD7"/>
+                        <viewControllerLayoutGuide type="bottom" id="FZa-GF-itE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="owB-1w-P7c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKj-vT-yop">
+                                <rect key="frame" x="26" y="104" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEV-mE-lps">
+                                <rect key="frame" x="26" y="64" width="55" height="30"/>
+                                <state key="normal" title="address"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="glK-1e-j8C">
+                                <rect key="frame" x="26" y="135" width="323" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="270" id="BpF-6L-OTe"/>
+                                </constraints>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajM-2V-5vh">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="FPg-KK-sL4">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Ry0-fH-c2r">
+                                            <connections>
+                                                <segue destination="H2l-pd-W5J" kind="unwind" identifier="unwindToBuy" unwindAction="unwindToBuyWithSegue:" id="i0K-Xq-Vua"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOL-2n-eIu">
+                                <rect key="frame" x="310" y="64" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCn-M4-o9K">
+                                <rect key="frame" x="26" y="415" width="65" height="30"/>
+                                <state key="normal" title="comment"/>
+                                <connections>
+                                    <action selector="commentButtonTapped:" destination="75p-Cr-3L5" eventType="touchUpInside" id="OWg-DT-i0A"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXr-gy-Amg">
+                                <rect key="frame" x="26" y="455" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HEV-mE-lps" firstAttribute="leading" secondItem="owB-1w-P7c" secondAttribute="leadingMargin" constant="10" id="1jL-bI-9C6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yOL-2n-eIu" secondAttribute="trailing" constant="10" id="7Pg-PP-b5d"/>
+                            <constraint firstItem="cCn-M4-o9K" firstAttribute="leading" secondItem="owB-1w-P7c" secondAttribute="leadingMargin" constant="10" id="8gR-HR-aaB"/>
+                            <constraint firstItem="oXr-gy-Amg" firstAttribute="leading" secondItem="owB-1w-P7c" secondAttribute="leadingMargin" constant="10" id="H9m-Bv-7uR"/>
+                            <constraint firstItem="bKj-vT-yop" firstAttribute="top" secondItem="HEV-mE-lps" secondAttribute="bottom" constant="10" id="Hw6-NZ-uxh"/>
+                            <constraint firstItem="ajM-2V-5vh" firstAttribute="top" secondItem="owB-1w-P7c" secondAttribute="top" id="KkT-GS-MTP"/>
+                            <constraint firstItem="yOL-2n-eIu" firstAttribute="top" secondItem="ajM-2V-5vh" secondAttribute="bottom" constant="20" id="Kw8-RQ-gRd"/>
+                            <constraint firstAttribute="trailing" secondItem="ajM-2V-5vh" secondAttribute="trailing" id="QlF-Ri-Hz3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="glK-1e-j8C" secondAttribute="trailing" constant="10" id="Ud2-Vq-V6X"/>
+                            <constraint firstItem="glK-1e-j8C" firstAttribute="top" secondItem="bKj-vT-yop" secondAttribute="bottom" constant="10" id="W67-e8-0cp"/>
+                            <constraint firstItem="bKj-vT-yop" firstAttribute="leading" secondItem="owB-1w-P7c" secondAttribute="leadingMargin" constant="10" id="ZZJ-Rb-Cja"/>
+                            <constraint firstItem="ajM-2V-5vh" firstAttribute="leading" secondItem="owB-1w-P7c" secondAttribute="leading" id="gPx-gd-wDa"/>
+                            <constraint firstItem="HEV-mE-lps" firstAttribute="top" secondItem="ajM-2V-5vh" secondAttribute="bottom" constant="20" id="jlk-b5-RqE"/>
+                            <constraint firstItem="glK-1e-j8C" firstAttribute="leading" secondItem="owB-1w-P7c" secondAttribute="leadingMargin" constant="10" id="jvz-dB-sfN"/>
+                            <constraint firstItem="cCn-M4-o9K" firstAttribute="top" secondItem="glK-1e-j8C" secondAttribute="bottom" constant="10" id="mcW-6I-EEW"/>
+                            <constraint firstItem="oXr-gy-Amg" firstAttribute="top" secondItem="cCn-M4-o9K" secondAttribute="bottom" constant="10" id="yXG-tQ-yCv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="address" destination="HEV-mE-lps" id="NMF-ZB-G6z"/>
+                        <outlet property="addressButtonTapped" destination="HEV-mE-lps" id="s4v-gw-iVJ"/>
+                        <outlet property="caption" destination="oXr-gy-Amg" id="YAM-ub-KaD"/>
+                        <outlet property="condition" destination="bKj-vT-yop" id="YAl-RS-Pt0"/>
+                        <outlet property="imageView" destination="glK-1e-j8C" id="W5R-od-DBk"/>
+                        <outlet property="navBar" destination="ajM-2V-5vh" id="YxF-do-ZQ1"/>
+                        <outlet property="price" destination="yOL-2n-eIu" id="dbf-hG-PWO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nst-ou-p3Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="H2l-pd-W5J" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1228" y="1076"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TpU-ot-V2v">

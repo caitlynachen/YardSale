@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
                         
                         shouldPerformSegue = true
                         
-                        var top = UIApplication.shared.keyWindow!.rootViewController!
+                        let top = UIApplication.shared.keyWindow!.rootViewController!
                         top.performSegue(withIdentifier: "createUserToTab", sender: top)
                         
                     }
@@ -119,7 +119,7 @@ class LoginViewController: UIViewController {
                         
                        shouldPerformSegue = true
                         
-                        var top = UIApplication.shared.keyWindow!.rootViewController!
+                        let top = UIApplication.shared.keyWindow!.rootViewController!
                         top.performSegue(withIdentifier: "loginToTab", sender: top)
                         
                     }

@@ -192,7 +192,7 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                         let downloadURL = metadata!.downloadURL()
                         
                         let price = round(Double(self.priceTextField.text!)!*100)/100
-                        let items = ItemObject(title: self.titleTextField.text!, price: Double(price), condition: self.conditionTextField.text!, caption: self.captionTextView.text, imageUrl: String(describing: downloadURL!), createdAt: String(describing: NSDate()))
+                        let items = ItemObject(title: self.titleTextField.text!, price: Double(price), condition: self.conditionTextField.text!, caption: self.captionTextView.text, imageUrl: String(describing: downloadURL!), createdAt: String(describing: NSDate()), addressStr: self.search.text!, latCoor: (self.place?.coordinate.latitude)!, longCoor: (self.place?.coordinate.longitude)! )
                         itemRef.setValue(items.toAnyObject())
                         
                         

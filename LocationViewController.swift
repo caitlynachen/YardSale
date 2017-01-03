@@ -90,7 +90,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate , GMSM
         let camera = GMSCameraPosition.camera(withLatitude: place.coordinate.latitude, longitude: place.coordinate.longitude, zoom: 15.0)
         
         navBar.topItem?.title = place.formattedAddress
-        var marker = GMSMarker(position: CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
+        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude: place.coordinate.longitude))
         marker.map = googleMapsView
         placeGLobal = place
         
