@@ -59,10 +59,7 @@ class BuyItemViewController: UIViewController {
         ]
         let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
         let mapItem = MKMapItem(placemark: placemark)
-        if item?.title != nil{
-            mapItem.name = "\(item?.title)"
-        }
-        
+        mapItem.name = "\(item?.title)"
         mapItem.openInMaps(launchOptions: options)
     }
     
