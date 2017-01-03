@@ -439,23 +439,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKj-vT-yop">
-                                <rect key="frame" x="26" y="104" width="71" height="21"/>
+                                <rect key="frame" x="26" y="124" width="71" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEV-mE-lps">
-                                <rect key="frame" x="26" y="64" width="55" height="30"/>
+                                <rect key="frame" x="26" y="84" width="55" height="30"/>
                                 <state key="normal" title="address"/>
+                                <connections>
+                                    <action selector="addressButtonTapped:" destination="75p-Cr-3L5" eventType="touchUpInside" id="DMV-Hy-5gH"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="glK-1e-j8C">
-                                <rect key="frame" x="26" y="135" width="323" height="270"/>
+                                <rect key="frame" x="26" y="155" width="323" height="270"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="270" id="BpF-6L-OTe"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOL-2n-eIu">
+                                <rect key="frame" x="310" y="84" width="39" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXr-gy-Amg">
+                                <rect key="frame" x="26" y="475" width="57" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCn-M4-o9K">
+                                <rect key="frame" x="26" y="435" width="65" height="30"/>
+                                <state key="normal" title="comment"/>
+                                <connections>
+                                    <action selector="commentButtonTapped:" destination="75p-Cr-3L5" eventType="touchUpInside" id="OWg-DT-i0A"/>
+                                </connections>
+                            </button>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajM-2V-5vh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="FPg-KK-sL4">
                                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="Ry0-fH-c2r">
@@ -466,34 +488,15 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOL-2n-eIu">
-                                <rect key="frame" x="310" y="64" width="39" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCn-M4-o9K">
-                                <rect key="frame" x="26" y="415" width="65" height="30"/>
-                                <state key="normal" title="comment"/>
-                                <connections>
-                                    <action selector="commentButtonTapped:" destination="75p-Cr-3L5" eventType="touchUpInside" id="OWg-DT-i0A"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXr-gy-Amg">
-                                <rect key="frame" x="26" y="455" width="57" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HEV-mE-lps" firstAttribute="leading" secondItem="owB-1w-P7c" secondAttribute="leadingMargin" constant="10" id="1jL-bI-9C6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yOL-2n-eIu" secondAttribute="trailing" constant="10" id="7Pg-PP-b5d"/>
+                            <constraint firstItem="ajM-2V-5vh" firstAttribute="top" secondItem="DEZ-Bk-BD7" secondAttribute="bottom" id="8KV-lS-akC"/>
                             <constraint firstItem="cCn-M4-o9K" firstAttribute="leading" secondItem="owB-1w-P7c" secondAttribute="leadingMargin" constant="10" id="8gR-HR-aaB"/>
                             <constraint firstItem="oXr-gy-Amg" firstAttribute="leading" secondItem="owB-1w-P7c" secondAttribute="leadingMargin" constant="10" id="H9m-Bv-7uR"/>
                             <constraint firstItem="bKj-vT-yop" firstAttribute="top" secondItem="HEV-mE-lps" secondAttribute="bottom" constant="10" id="Hw6-NZ-uxh"/>
-                            <constraint firstItem="ajM-2V-5vh" firstAttribute="top" secondItem="owB-1w-P7c" secondAttribute="top" id="KkT-GS-MTP"/>
                             <constraint firstItem="yOL-2n-eIu" firstAttribute="top" secondItem="ajM-2V-5vh" secondAttribute="bottom" constant="20" id="Kw8-RQ-gRd"/>
                             <constraint firstAttribute="trailing" secondItem="ajM-2V-5vh" secondAttribute="trailing" id="QlF-Ri-Hz3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="glK-1e-j8C" secondAttribute="trailing" constant="10" id="Ud2-Vq-V6X"/>
@@ -508,7 +511,6 @@
                     </view>
                     <connections>
                         <outlet property="address" destination="HEV-mE-lps" id="NMF-ZB-G6z"/>
-                        <outlet property="addressButtonTapped" destination="HEV-mE-lps" id="s4v-gw-iVJ"/>
                         <outlet property="caption" destination="oXr-gy-Amg" id="YAM-ub-KaD"/>
                         <outlet property="condition" destination="bKj-vT-yop" id="YAl-RS-Pt0"/>
                         <outlet property="imageView" destination="glK-1e-j8C" id="W5R-od-DBk"/>
@@ -519,7 +521,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nst-ou-p3Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="H2l-pd-W5J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1228" y="1076"/>
+            <point key="canvasLocation" x="1231" y="1103"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TpU-ot-V2v">

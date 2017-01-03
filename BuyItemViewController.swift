@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class BuyItemViewController: UIViewController {
     
@@ -15,7 +16,7 @@ class BuyItemViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationBar!
     
     @IBOutlet weak var address: UIButton!
-
+    
     @IBOutlet weak var condition: UILabel!
     @IBOutlet weak var caption: UILabel!
     @IBOutlet weak var price: UILabel!
@@ -28,8 +29,8 @@ class BuyItemViewController: UIViewController {
         address.setTitle(item?.addressStr, for: .normal)
         caption.text = item?.caption
         condition.text = item?.condition
-      
-//        price.text = String(describing: item?.price) as? String
+        
+        //        price.text = String(describing: item?.price) as? String
         
         let url = URL(string: (item?.imageUrl)!)
         
@@ -37,29 +38,48 @@ class BuyItemViewController: UIViewController {
         if data != nil{
             imageView.image = UIImage(data: data as! Data)
         }
-
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func commentButtonTapped(_ sender: Any) {
     }
     
-    @IBOutlet weak var addressButtonTapped: UIButton!
     
-
+    @IBAction func addressButtonTapped(_ sender: Any) {
+        
+        let latitude:CLLocationDegrees =  (item?.latCoor)!
+        let longitude:CLLocationDegrees =  (item?.longCoor)!
+        
+        let regionDistance:CLLocationDistance = 10000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        if item?.title != nil{
+            mapItem.name = "\(item?.title)"
+        }
+        
+        mapItem.openInMaps(launchOptions: options)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
