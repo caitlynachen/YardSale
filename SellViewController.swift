@@ -11,9 +11,11 @@ import Firebase
 import FirebaseStorage
 import GooglePlaces
 import GoogleMaps
+import FirebaseAuth
 
 class SellViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
+    @IBOutlet weak var chooseLocLabel: UILabel!
     @IBOutlet weak var search: UISearchBar!
 //    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView?
@@ -38,6 +40,7 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if place != nil{
 //            locationLabel.text = place?.formattedAddress
             search.text = place?.formattedAddress
+            chooseLocLabel.isHidden = true
         }
         if conStr != nil {
             conditionTextField.text = conStr
@@ -201,7 +204,7 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                         let downloadURL = metadata!.downloadURL()
                         
                         let price = round(Double(self.priceTextField.text!)!*100)/100
-                        let items = ItemObject(title: self.titleTextField.text!, price: Double(price), condition: self.conditionTextField.text!, caption: self.captionTextView.text, imageUrl: String(describing: downloadURL!), createdAt: String(describing: NSDate()), addressStr: self.search.text!, latCoor: (self.place?.coordinate.latitude)!, longCoor: (self.place?.coordinate.longitude)!)
+                        let items = ItemObject(title: self.titleTextField.text!, price: Double(price), condition: self.conditionTextField.text!, caption: self.captionTextView.text, imageUrl: String(describing: downloadURL!), createdAt: String(describing: NSDate()), addressStr: self.search.text!, latCoor: (self.place?.coordinate.latitude)!, longCoor: (self.place?.coordinate.longitude)!, addedByUser: (FIRAuth.auth()?.currentUser?.email)!)
                         itemRef.setValue(items.toAnyObject())
                         
                         

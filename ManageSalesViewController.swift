@@ -10,20 +10,81 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class ManageSalesViewController: UIViewController {
+class ManageSalesViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    var items: [ItemObject] = []
+    let ref = FIRDatabase.database().reference(withPath: "item-name")
 
+
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
-        let ref = FIRDatabase.database().reference(withPath: "item-name")
+        self.tableView.rowHeight = 144
+
         
+        tableView.delegate = self
+        tableView.dataSource = self
         super.viewDidLoad()
+        
+        let query = ref.queryOrdered(byChild: "addedByUser").queryEqual(toValue: FIRAuth.auth()?.currentUser?.email!)
+        query.observe(.value, with: { snapshot in
+            var newItems: [ItemObject] = []
+            
+            for item in snapshot.children {
+                let itemOb = ItemObject(snapshot: item as! FIRDataSnapshot)
+                newItems.append(itemOb)
+            }
+            
+            self.items = newItems
+            self.tableView.reloadData()
+        })
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    var itemRow: Int?
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:ManageTableViewCell = tableView.dequeueReusableCell(withIdentifier: "manCell", for: indexPath) as! ManageTableViewCell
+        let itemOb = items[indexPath.row]
+        
+        let url = URL(string: itemOb.imageUrl)
+        
+        let data = NSData(contentsOf: url!)
+        if data != nil{
+            cell.imgView.image = UIImage(data: data as! Data)
+        }
+        itemRow = indexPath.row
+        
+        cell.titleLabel.text = itemOb.title
+        cell.priceLabel.text = String(itemOb.price)
+        cell.conditionLabel.text = itemOb.condition
+        cell.addressLabel.text = itemOb.addressStr
+        cell.soldButton.addTarget(self, action: #selector(self.soldButtonClicked), for: .touchUpInside)
+        
+        
+        return cell
+    }
+    
+    func soldButtonClicked(_ sender: Any) {
+        
+//        items[IndexPath.row] delete
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+
     
     @IBAction func unwindToManage(segue: UIStoryboardSegue){
         

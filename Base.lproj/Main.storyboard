@@ -272,6 +272,7 @@
                     <connections>
                         <outlet property="cameraButton" destination="HF8-et-0nX" id="lyp-hG-cNF"/>
                         <outlet property="captionTextView" destination="lbO-vt-E6h" id="ziS-z2-xqv"/>
+                        <outlet property="chooseLocLabel" destination="XjM-qV-gMA" id="hl2-Nf-wj6"/>
                         <outlet property="conditionTextField" destination="WOi-ks-3So" id="KRZ-eo-5Dt"/>
                         <outlet property="imageView" destination="873-UI-h71" id="Tw4-VF-CAg"/>
                         <outlet property="priceTextField" destination="lVe-gf-MMe" id="N9Z-OG-1Fc"/>
@@ -300,7 +301,7 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Choose a condition" id="fvx-7h-dr3">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" systemItem="done" id="Rvp-0h-pZi">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Rvp-0h-pZi">
                                             <connections>
                                                 <segue destination="VWb-1W-WLn" kind="unwind" identifier="unwindFromCon" unwindAction="unwindToSellFromConWithSegue:" id="3TW-E2-IsF"/>
                                             </connections>
@@ -309,7 +310,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fea-xU-9em">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
+                                <rect key="frame" x="16" y="66" width="343" height="601"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConCell" rowHeight="100" id="TbE-YY-ROv" customClass="ConditionTableViewCell" customModule="YardSale" customModuleProvider="target">
@@ -353,7 +354,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fea-xU-9em" firstAttribute="top" secondItem="1f4-cg-6sk" secondAttribute="bottom" id="4cB-ax-GzD"/>
+                            <constraint firstItem="fea-xU-9em" firstAttribute="top" secondItem="1f4-cg-6sk" secondAttribute="bottom" constant="2" id="4cB-ax-GzD"/>
                             <constraint firstItem="fea-xU-9em" firstAttribute="leading" secondItem="QaO-gN-Crm" secondAttribute="leadingMargin" id="61W-O9-O4S"/>
                             <constraint firstItem="fea-xU-9em" firstAttribute="trailing" secondItem="QaO-gN-Crm" secondAttribute="trailingMargin" id="6l8-cP-dmp"/>
                             <constraint firstItem="XKg-OV-SI6" firstAttribute="top" secondItem="fea-xU-9em" secondAttribute="bottom" id="OVt-rX-Fvg"/>
@@ -455,7 +456,7 @@
                                 <rect key="frame" x="16" y="84" width="343" height="534"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="144" id="Zqj-ec-O8D" customClass="ManageTableViewCell" customModule="YardSale" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="manCell" rowHeight="144" id="Zqj-ec-O8D" customClass="ManageTableViewCell" customModule="YardSale" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="144"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zqj-ec-O8D" id="P3V-bI-JBJ">
@@ -494,6 +495,10 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80h-9p-PRc">
                                                     <rect key="frame" x="267" y="8" width="68" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="68" id="oDS-KI-dba"/>
+                                                        <constraint firstAttribute="height" constant="44" id="uu1-cu-gtl"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                     <state key="normal" title="SOLD">
                                                         <color key="titleColor" red="0.52580078125000007" green="0.52580078125000007" blue="0.52580078125000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -501,18 +506,16 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="80h-9p-PRc" firstAttribute="top" secondItem="P3V-bI-JBJ" secondAttribute="topMargin" id="10Y-jw-RaE"/>
                                                 <constraint firstAttribute="bottom" secondItem="uRD-9s-New" secondAttribute="bottom" constant="7" id="8Ub-nZ-pPx"/>
                                                 <constraint firstItem="kF4-hv-mD5" firstAttribute="top" secondItem="P3V-bI-JBJ" secondAttribute="topMargin" id="9JU-SF-69x"/>
                                                 <constraint firstItem="Jvo-rY-KkV" firstAttribute="leading" secondItem="uRD-9s-New" secondAttribute="trailing" constant="10" id="FEB-pM-FFD"/>
                                                 <constraint firstItem="5aC-bc-u1D" firstAttribute="top" secondItem="Cxg-rl-bFP" secondAttribute="bottom" constant="8" id="GcW-rZ-452"/>
+                                                <constraint firstItem="80h-9p-PRc" firstAttribute="trailing" secondItem="P3V-bI-JBJ" secondAttribute="trailingMargin" id="K63-pQ-Cor"/>
                                                 <constraint firstItem="uRD-9s-New" firstAttribute="leading" secondItem="P3V-bI-JBJ" secondAttribute="leading" constant="17" id="KCu-m5-Tb7"/>
+                                                <constraint firstItem="80h-9p-PRc" firstAttribute="top" secondItem="P3V-bI-JBJ" secondAttribute="topMargin" id="LRz-8q-2XY"/>
                                                 <constraint firstItem="Cxg-rl-bFP" firstAttribute="top" secondItem="kF4-hv-mD5" secondAttribute="bottom" constant="8" id="MrK-M7-e1x"/>
                                                 <constraint firstItem="Cxg-rl-bFP" firstAttribute="leading" secondItem="uRD-9s-New" secondAttribute="trailing" constant="8" id="OnK-sa-qYQ"/>
-                                                <constraint firstItem="80h-9p-PRc" firstAttribute="trailing" secondItem="P3V-bI-JBJ" secondAttribute="trailingMargin" id="bCw-IS-ajL"/>
                                                 <constraint firstItem="Jvo-rY-KkV" firstAttribute="top" secondItem="5aC-bc-u1D" secondAttribute="bottom" constant="8" id="cdB-EY-lHu"/>
-                                                <constraint firstItem="80h-9p-PRc" firstAttribute="top" secondItem="P3V-bI-JBJ" secondAttribute="topMargin" id="chP-7J-p55"/>
-                                                <constraint firstItem="80h-9p-PRc" firstAttribute="trailing" secondItem="P3V-bI-JBJ" secondAttribute="trailingMargin" id="fb5-OW-uiF"/>
                                                 <constraint firstItem="kF4-hv-mD5" firstAttribute="leading" secondItem="uRD-9s-New" secondAttribute="trailing" constant="10" id="kS5-gd-wwd"/>
                                                 <constraint firstItem="5aC-bc-u1D" firstAttribute="leading" secondItem="uRD-9s-New" secondAttribute="trailing" constant="10" id="pwT-sx-z4u"/>
                                                 <constraint firstItem="uRD-9s-New" firstAttribute="top" secondItem="P3V-bI-JBJ" secondAttribute="top" constant="8" id="r5k-Ji-uRz"/>
@@ -523,11 +526,15 @@
                                             <outlet property="conditionLabel" destination="Jvo-rY-KkV" id="vTa-4l-QYM"/>
                                             <outlet property="imgView" destination="uRD-9s-New" id="GZf-VC-aXc"/>
                                             <outlet property="priceLabel" destination="5aC-bc-u1D" id="Fce-uu-f2j"/>
-                                            <outlet property="soldButton" destination="80h-9p-PRc" id="tUX-be-qfe"/>
+                                            <outlet property="soldButton" destination="80h-9p-PRc" id="OY0-Fs-Av6"/>
                                             <outlet property="titleLabel" destination="kF4-hv-mD5" id="A8a-9g-Uty"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="qdX-l6-Eqv" id="lWX-sx-oum"/>
+                                    <outlet property="delegate" destination="qdX-l6-Eqv" id="arF-gN-97W"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -542,6 +549,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Manage Sales" id="rD2-Uu-GyB"/>
+                    <connections>
+                        <outlet property="tableView" destination="GMR-w1-QcY" id="vyu-4p-9af"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BTD-lQ-Tu2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
