@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class ManageSalesViewController: UIViewController {
 
     override func viewDidLoad() {
+        let ref = FIRDatabase.database().reference(withPath: "item-name")
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
