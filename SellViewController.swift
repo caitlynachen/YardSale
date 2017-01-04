@@ -156,7 +156,7 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 
             }else if(conditionTextField.text == ""){
                 
-                let alertUpdate = UIAlertController(title: "Please enter the condition!", message: "The condition is required to post an item.", preferredStyle: .alert)
+                let alertUpdate = UIAlertController(title: "Please choose a condition!", message: "The condition is required to post an item.", preferredStyle: .alert)
                 let alert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
                 alertUpdate.addAction(alert)
                 self.present(alertUpdate, animated: true, completion: nil)

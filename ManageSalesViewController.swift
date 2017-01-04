@@ -71,11 +71,63 @@ class ManageSalesViewController: UIViewController,UITableViewDelegate, UITableVi
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            let actionSheetController: UIAlertController = UIAlertController()
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            }
+            actionSheetController.addAction(cancelAction)
+            let takePictureAction: UIAlertAction = UIAlertAction(title: "Delete", style: .default) { action -> Void in
+                let deleteAlert: UIAlertController = UIAlertController(title: "Confirm Deletion.", message: "Delete?", preferredStyle: .alert)
+                
+                let dontDeleteAction: UIAlertAction = UIAlertAction(title: "Don't Delete", style: .cancel) { action -> Void in
+                }
+                deleteAlert.addAction(dontDeleteAction)
+                let deleteAction: UIAlertAction = UIAlertAction(title: "Delete", style: .default) { action -> Void in
+                    
+                    let itemOb = self.items[indexPath.row]
+                    itemOb.ref?.removeValue()
+                }
+                deleteAlert.addAction(deleteAction)
+                
+                
+                self.present(deleteAlert, animated: true, completion: nil)
+            }
+            actionSheetController.addAction(takePictureAction)
+            self.present(actionSheetController, animated: true, completion: nil)
+            
+        }
+    }
+    
     func soldButtonClicked(_ sender: Any) {
         
-//        items[IndexPath.row] delete
+        let actionSheetController: UIAlertController = UIAlertController()
         
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+        }
+        actionSheetController.addAction(cancelAction)
+        let takePictureAction: UIAlertAction = UIAlertAction(title: "Sell", style: .default) { action -> Void in
+            let deleteAlert: UIAlertController = UIAlertController(title: "Confirm Sale.", message: "Sell?", preferredStyle: .alert)
+            
+            let dontDeleteAction: UIAlertAction = UIAlertAction(title: "Don't Sell", style: .cancel) { action -> Void in
+            }
+            deleteAlert.addAction(dontDeleteAction)
+            let deleteAction: UIAlertAction = UIAlertAction(title: "Sell", style: .default) { action -> Void in
+                
+                let itemOb = self.items[self.itemRow!]
+                itemOb.ref?.removeValue()
+            }
+            deleteAlert.addAction(deleteAction)
+            
+            
+            self.present(deleteAlert, animated: true, completion: nil)
+        }
+        actionSheetController.addAction(takePictureAction)
+        self.present(actionSheetController, animated: true, completion: nil)
         
+       
         
     }
 
