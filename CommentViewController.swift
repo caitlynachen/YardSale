@@ -26,7 +26,7 @@ class CommentViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.rowHeight = 100
+        self.tableView.rowHeight = 70
         
 
         commentRef = FIRDatabase.database().reference(withPath: "item-name/\((item?.title)!)/comments")
