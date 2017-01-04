@@ -553,7 +553,7 @@
                                 <rect key="frame" x="16" y="64" width="343" height="523"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ComCell" rowHeight="100" id="GFz-xp-o5D" customClass="CommentsTableViewCell" customModule="YardSale" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ComCell" rowHeight="100" id="GFz-xp-o5D" customClass="CommentsTableViewCell" customModule="YardSale" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GFz-xp-o5D" id="icN-l8-yYP">
@@ -601,21 +601,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hf1-zQ-bVr" firstAttribute="leading" secondItem="DkJ-2n-jSU" secondAttribute="leadingMargin" id="7XQ-lC-A8j"/>
+                            <constraint firstItem="Ai7-sh-ZLf" firstAttribute="top" secondItem="hf1-zQ-bVr" secondAttribute="top" id="AT0-sY-hAl"/>
+                            <constraint firstItem="Ai7-sh-ZLf" firstAttribute="top" secondItem="lpf-Lt-8ri" secondAttribute="bottom" constant="30" id="N6u-bH-rsJ"/>
                             <constraint firstItem="lpf-Lt-8ri" firstAttribute="top" secondItem="0fv-EJ-lkA" secondAttribute="bottom" id="Neo-R2-ecG"/>
-                            <constraint firstItem="geE-Xy-Iha" firstAttribute="top" secondItem="Ai7-sh-ZLf" secondAttribute="bottom" constant="20" id="QPS-BI-3zM"/>
+                            <constraint firstItem="Ai7-sh-ZLf" firstAttribute="bottom" secondItem="hf1-zQ-bVr" secondAttribute="bottom" id="SDE-oV-3Sm"/>
                             <constraint firstItem="0fv-EJ-lkA" firstAttribute="top" secondItem="uEk-CX-RGl" secondAttribute="bottom" id="TvJ-NG-SnV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hf1-zQ-bVr" secondAttribute="trailing" constant="50" id="YHh-9P-hL1"/>
                             <constraint firstItem="geE-Xy-Iha" firstAttribute="top" secondItem="hf1-zQ-bVr" secondAttribute="bottom" constant="20" id="ffg-QA-aW8"/>
                             <constraint firstItem="lpf-Lt-8ri" firstAttribute="leading" secondItem="DkJ-2n-jSU" secondAttribute="leadingMargin" id="h0p-YP-bxg"/>
                             <constraint firstAttribute="trailing" secondItem="0fv-EJ-lkA" secondAttribute="trailing" id="iI7-n4-xiP"/>
                             <constraint firstItem="Ai7-sh-ZLf" firstAttribute="leading" secondItem="hf1-zQ-bVr" secondAttribute="trailing" constant="10" id="jgQ-iQ-4ye"/>
-                            <constraint firstItem="Ai7-sh-ZLf" firstAttribute="top" secondItem="lpf-Lt-8ri" secondAttribute="bottom" constant="30" id="k4h-O7-Niw"/>
                             <constraint firstItem="lpf-Lt-8ri" firstAttribute="trailing" secondItem="DkJ-2n-jSU" secondAttribute="trailingMargin" id="oaG-Fv-wVe"/>
                             <constraint firstItem="0fv-EJ-lkA" firstAttribute="leading" secondItem="DkJ-2n-jSU" secondAttribute="leading" id="q5k-h3-7kM"/>
                             <constraint firstAttribute="trailing" secondItem="Ai7-sh-ZLf" secondAttribute="trailing" constant="10" id="qma-WM-7VU"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="ffg-QA-aW8" id="gBQ-QG-HML"/>
                         <outlet property="tableView" destination="lpf-Lt-8ri" id="2du-oE-l2b"/>
                         <outlet property="textField" destination="hf1-zQ-bVr" id="Mwl-4R-ZZY"/>
                     </connections>
