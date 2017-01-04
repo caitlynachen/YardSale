@@ -11,42 +11,68 @@ import Firebase
 import FirebaseStorage
 import FirebaseAuth
 
-class CommentViewController: UIViewController {
+class CommentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var item : ItemObject?
     @IBOutlet weak var textField: UITextField!
     
-    var ref: FIRStorageReference?
+    @IBOutlet weak var tableView: UITableView!
     var commentRef: FIRDatabaseReference?
-//    var comrefs: FIRStorageReference?
+    
+    var comments: [CommentObject] = []
 
-//    var URLstr: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let itemref = FIRStorage.storage().reference(withPath: "item-name")
-//        comrefs = itemref.storage.reference(withPath: "comments")
-        ref = FIRStorage.storage().reference(forURL: "gs://yardsale-cd99c.appspot.com/item-name")
+        self.tableView.rowHeight = 100
         
-//        let itemref = FIRDatabase.database().reference(withPath: "item-name")
-//        let itemsRef = itemref.database.reference(withPath: (item?.title)!)
-//        print((item?.title)!)
-        commentRef = FIRDatabase.database().reference(withPath: "item-name/\((item?.title)!)/comments")
 
-        // Do any additional setup after loading the view.
+        commentRef = FIRDatabase.database().reference(withPath: "item-name/\((item?.title)!)/comments")
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        
+        commentRef?.observe(.value, with: { snapshot in
+            var newComs: [CommentObject] = []
+            
+            for item in snapshot.children {
+                let itemOb = CommentObject(snapshot: item as! FIRDataSnapshot)
+                newComs.append(itemOb)
+            }
+            
+            self.comments = newComs
+            self.tableView.reloadData()
+        })
+
+
     }
     
     @IBAction func sendButtonTapped(_ sender: Any) {
-        let data = NSData()
         
         let comref = commentRef?.child(textField.text!)
         
         let comOb = CommentObject(title: self.textField.text!, createdAt: String(describing: NSDate()), createdBy: (FIRAuth.auth()?.currentUser?.email)!)
-        //                self.commentRef?.child("comments").setValue(comOb.toAnyObject())
+
         comref?.setValue(comOb.toAnyObject())
         
     }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:CommentsTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ComCell", for: indexPath) as! CommentsTableViewCell
+        let itemOb = comments[indexPath.row]
+        
+        cell.commentLabel.text = itemOb.title
+        cell.createdBy.text = itemOb.createdBy
+        
+        return cell
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
