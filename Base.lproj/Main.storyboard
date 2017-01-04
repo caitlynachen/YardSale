@@ -594,7 +594,13 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fv-EJ-lkA">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Comments" id="u1c-50-4ux"/>
+                                    <navigationItem title="Comments" id="u1c-50-4ux">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Y3U-7d-KwW">
+                                            <connections>
+                                                <segue destination="EDk-MT-CgL" kind="unwind" identifier="unwindToBuyItem" unwindAction="unwindToBuyItemWithSegue:" id="hZG-Ts-Gec"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -623,6 +629,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1iX-dJ-AYG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="EDk-MT-CgL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2040.8" y="1039.4302848575712"/>
         </scene>
