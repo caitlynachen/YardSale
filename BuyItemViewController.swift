@@ -25,12 +25,19 @@ class BuyItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navBar.topItem?.title = item?.title
+        navBar.topItem!.title = ""
+        navBar.topItem!.title = item?.title
         address.setTitle(item?.addressStr, for: .normal)
         caption.text = item?.caption
         condition.text = item?.condition
         
-        //        price.text = String(describing: item?.price) as? String
+        let prices = item?.price
+        let priceString = String(format: "%.01f", prices!)
+        
+        price.text = priceString
+        
+        
+        
         
         let url = URL(string: (item?.imageUrl)!)
         
@@ -42,6 +49,7 @@ class BuyItemViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     @IBAction func commentButtonTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "toCommentView", sender: self)
     }
     
     
@@ -61,6 +69,7 @@ class BuyItemViewController: UIViewController {
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = "\(item?.title)"
         mapItem.openInMaps(launchOptions: options)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,14 +78,23 @@ class BuyItemViewController: UIViewController {
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "toCommentView"{
+            let dvc = segue.destination as! CommentViewController
+            dvc.item = self.item
+//
+//            dvc.URLstr = newString
+//            print(newString)
+            
+            
+            
+        }
+    }
+    
     
 }

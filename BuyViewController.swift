@@ -57,13 +57,11 @@ class BuyViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             cell.imgView.image = UIImage(data: data as! Data)
         }
 
-        
-        
         cell.titleLabel.text = itemOb.title
         cell.priceLabel.text = String(itemOb.price)
         cell.conditionLabel.text = itemOb.condition
         cell.addressLabel.text = itemOb.addressStr
-
+        
         return cell
     }
 
