@@ -19,6 +19,8 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var imageView: UIImageView?
     var imagePicker = UIImagePickerController()
     
+    var conStr: String?
+    
     var place: GMSPlace?
     
     @IBOutlet weak var cameraButton: UIButton!
@@ -37,6 +39,9 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //            locationLabel.text = place?.formattedAddress
             search.text = place?.formattedAddress
         }
+        if conStr != nil {
+            conditionTextField.text = conStr
+        }
     }
     
     override func viewDidLoad() {
@@ -46,6 +51,8 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         
         view.addGestureRecognizer(tap)
+        
+        conditionTextField.isEnabled = false
         
         // Do any additional setup after loading the view.
     }
@@ -99,6 +106,8 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imageView?.contentMode = .scaleAspectFit //3
         imageView?.image = chosenImage //4
         dismiss(animated:true, completion: nil) //5
+    }
+    @IBAction func conditionButtonTapped(_ sender: Any) {
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -210,6 +219,9 @@ class SellViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func unwindToSell(segue: UIStoryboardSegue){
+        
+    }
+    @IBAction func unwindToSellFromCon(segue: UIStoryboardSegue){
         
     }
     
