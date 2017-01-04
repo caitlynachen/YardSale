@@ -175,10 +175,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Condition" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WOi-ks-3So">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Choose condition" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WOi-ks-3So">
                                 <rect key="frame" x="249" y="240" width="110" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Kxc-YV-OAR"/>
+                                </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wzr-eQ-tdo">
@@ -211,6 +214,12 @@
                                     <segue destination="Suw-rn-9ds" kind="presentation" id="vyx-UN-4WF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click here to choose       your location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjM-qV-gMA">
+                                <rect key="frame" x="31" y="303" width="257" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.53787109374999997" green="0.53787109374999997" blue="0.53787109374999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -229,6 +238,7 @@
                             <constraint firstAttribute="trailing" secondItem="ntv-Eq-fbi" secondAttribute="trailing" id="QNH-IT-XKm"/>
                             <constraint firstItem="wzr-eQ-tdo" firstAttribute="leading" secondItem="6EZ-Th-hH1" secondAttribute="leading" id="Qcm-Om-lFg"/>
                             <constraint firstItem="lbO-vt-E6h" firstAttribute="leading" secondItem="873-UI-h71" secondAttribute="trailing" constant="10" id="SC8-7F-uLm"/>
+                            <constraint firstItem="XjM-qV-gMA" firstAttribute="top" secondItem="HF8-et-0nX" secondAttribute="bottom" constant="33" id="USe-5V-qXg"/>
                             <constraint firstItem="HF8-et-0nX" firstAttribute="bottom" secondItem="873-UI-h71" secondAttribute="bottom" id="Xa7-bk-xmx"/>
                             <constraint firstItem="jWc-to-A9G" firstAttribute="top" secondItem="HF8-et-0nX" secondAttribute="bottom" constant="20" id="aeI-Ce-Gzo"/>
                             <constraint firstItem="lbO-vt-E6h" firstAttribute="top" secondItem="873-UI-h71" secondAttribute="top" id="bCq-Co-MyW"/>
@@ -238,6 +248,7 @@
                             <constraint firstItem="Fma-4W-FbT" firstAttribute="trailing" secondItem="6EZ-Th-hH1" secondAttribute="trailingMargin" id="fjJ-7g-TTC"/>
                             <constraint firstItem="873-UI-h71" firstAttribute="top" secondItem="Fma-4W-FbT" secondAttribute="bottom" constant="15" id="hRq-tp-wN9"/>
                             <constraint firstItem="873-UI-h71" firstAttribute="leading" secondItem="6EZ-Th-hH1" secondAttribute="leadingMargin" id="m2C-QV-PyK"/>
+                            <constraint firstItem="XjM-qV-gMA" firstAttribute="leading" secondItem="6EZ-Th-hH1" secondAttribute="leadingMargin" constant="15" id="mCH-Ts-MHb"/>
                             <constraint firstItem="HF8-et-0nX" firstAttribute="top" secondItem="873-UI-h71" secondAttribute="top" id="q5L-Fg-dya"/>
                             <constraint firstItem="0gb-25-nnL" firstAttribute="top" secondItem="wzr-eQ-tdo" secondAttribute="bottom" id="qJm-Tm-uuY"/>
                             <constraint firstAttribute="trailing" secondItem="rzi-EA-g25" secondAttribute="trailing" id="tSQ-fL-ecJ"/>
