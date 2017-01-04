@@ -40,20 +40,12 @@ class CommentViewController: UIViewController {
     @IBAction func sendButtonTapped(_ sender: Any) {
         let data = NSData()
         
-        let comref = ref?.child(textField.text!)
+        let comref = commentRef?.child(textField.text!)
         
-        let uploadTask = comref?.put(data as Data, metadata: nil) { metadata, error in
-            if error != nil {
-                
-            } else {
-                
-                let comOb = CommentObject(title: self.textField.text!, createdAt: String(describing: NSDate()), createdBy: (FIRAuth.auth()?.currentUser?.email)!)
-//                self.commentRef?.child("comments").setValue(comOb.toAnyObject())
-                self.commentRef?.updateChildValues(comOb.toAnyObject() as! [AnyHashable : Any])
-                
-                
-            }
-        }
+        let comOb = CommentObject(title: self.textField.text!, createdAt: String(describing: NSDate()), createdBy: (FIRAuth.auth()?.currentUser?.email)!)
+        //                self.commentRef?.child("comments").setValue(comOb.toAnyObject())
+        comref?.setValue(comOb.toAnyObject())
+        
     }
 
     override func didReceiveMemoryWarning() {
